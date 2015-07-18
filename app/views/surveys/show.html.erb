@@ -1,17 +1,17 @@
 <h1><%= @survey.name %></h1>
 
-<ol class="questions">
+<ul class="questions">
 <% @survey.questions.each do |question| %>
   <li>
     <%= question.content %>
     <ol class="answers">
       <% question.answers.each do |answer| %>
-        <li><%= answer.content %></li>
+        <li><%= answer.content %> (<%= answer.quantity %>)</li>
       <% end %>
     </ol>
-  </li>
+  </li> <br>
 <% end %>
-</ol>
+</ul>
 
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back to Surveys', surveys_path %>
