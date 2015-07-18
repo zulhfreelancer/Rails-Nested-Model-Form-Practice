@@ -16,7 +16,15 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
+
     if @survey.save
+      # add 2 questions to the survey
+      2.times {@survey.questions.create}
+
+      # give the questions name (foods, drinks)
+      @survey.questions.first.update_attribute  :content, "Foods"
+      @survey.questions.last.update_attribute   :content, "Drinks"
+
       redirect_to @survey, notice: "Successfully created survey."
     else
       render :new
