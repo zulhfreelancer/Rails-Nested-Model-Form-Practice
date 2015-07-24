@@ -24,3 +24,13 @@ survey = Survey.create! name: "Superhero Questionnaire"
 survey.questions.create! content: "Batman or Superman?"
 survey.questions.create! content: "Spiderman or Flash?"
 survey.questions.create! content: "Aquaman or Green Lantern?"
+
+
+Cat.where(name: 'Browne', colour: 'brown').first_or_create
+Cat.where(name: 'Blacke', colour: 'black').first_or_create
+Cat.where(name: 'Whitee', colour: 'white').first_or_create
+
+
+Dog.where(name: 'Orangee', colour: 'orange').first_or_create
+Dog.where(name: 'Bluee', colour: 'blue').first_or_create
+Dog.where(name: 'Rede', colour: 'red').first_or_create
