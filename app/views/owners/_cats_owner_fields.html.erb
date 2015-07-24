@@ -1,7 +1,0 @@
-<br/>
-  <%= f.label :cat %>
-  <%= f.select :cat_id, options_for_select(Cat.all.map{|c| [c.name, c.id]})%>
-  <%= f.label :quantity %>
-  <%= f.text_field :quantity %>
-  <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "Remove Cat" %>

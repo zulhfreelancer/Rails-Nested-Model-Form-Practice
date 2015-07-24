@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724150721) do
+ActiveRecord::Schema.define(version: 20150718001039) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
@@ -19,61 +19,6 @@ ActiveRecord::Schema.define(version: 20150724150721) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "quantity"
-  end
-
-  create_table "cats", force: :cascade do |t|
-    t.string   "name"
-    t.string   "colour"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "owner_id"
-  end
-
-  create_table "cats_owners", force: :cascade do |t|
-    t.integer  "cat_id"
-    t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "quantity"
-  end
-
-  add_index "cats_owners", ["cat_id"], name: "index_cats_owners_on_cat_id"
-  add_index "cats_owners", ["owner_id"], name: "index_cats_owners_on_owner_id"
-
-  create_table "dogs", force: :cascade do |t|
-    t.string   "name"
-    t.string   "colour"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "dogs_owners", force: :cascade do |t|
-    t.integer  "dog_id"
-    t.integer  "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "quantity"
-  end
-
-  add_index "dogs_owners", ["dog_id"], name: "index_dogs_owners_on_dog_id"
-  add_index "dogs_owners", ["owner_id"], name: "index_dogs_owners_on_owner_id"
-
-  create_table "drinks", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "foods", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "owners", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
