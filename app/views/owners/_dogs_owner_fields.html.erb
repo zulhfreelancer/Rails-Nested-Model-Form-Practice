@@ -1,6 +1,6 @@
 <br/>
   <%= f.label :dog %>
-  <%= f.select :dog_id, options_for_select(Dog.all.map{|d| [d.name, d.id]})%>
+  <%= f.select :dog_id, options_for_select(Dog.all.map{|d| [d.name, d.id]}, f.object.dog_id)%>
   <%= f.label :quantity %>
   <%= f.text_field :quantity %>
   <%= f.check_box :_destroy %>
