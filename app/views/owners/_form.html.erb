@@ -13,16 +13,21 @@
   <%= f.label :name %>
 
   <%= f.text_field :name %>
-  <h4> Add some Cats </h4>
+
+  <h4> Add Cats </h4>
   <%= f.fields_for :cats_owners do |co| %>
     <%= render 'cats_owner_fields', f: co %>
   <% end %>
   <%= link_to_add_fields "Add Cat", f, :cats_owners %>
-  <h4> Add some Dogs</h4>
+  
+  <h4> Add Dogs</h4>
   <%= f.fields_for :dogs_owners do |co| %>
     <%= render 'dogs_owner_fields', f: co %>
   <% end %>
   <%= link_to_add_fields "Add Dog", f, :dogs_owners %>
+
+  <br><br>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

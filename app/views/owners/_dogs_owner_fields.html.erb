@@ -1,7 +1,11 @@
 <br/>
   <%= f.label :dog %>
   <%= f.select :dog_id, options_for_select(Dog.all.map{|d| [d.name, d.id]}, f.object.dog_id)%>
+  
   <%= f.label :quantity %>
   <%= f.text_field :quantity %>
-  <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "Remove Dog" %>
+
+  <%= f.label :status %>
+  <%= f.text_field :status %>
+
+  <%= f.check_box :_destroy %><%= f.label :_destroy, "Remove Dog" %><br>

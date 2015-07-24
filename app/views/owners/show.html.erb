@@ -4,16 +4,19 @@
 </h1>
 
 <% if @owner.cats_owners.present? %>
-  <h3> This guy has these cats: </h3>
+  <h3>Cats: </h3>
   <ul>
     <% @owner.cats_owners.each do |co| %> 
-      <li><%= co.quantity%> cats named <%= co.cat.name %></li>
+      <li><%= co.cat.name %> | Quantity: <%= co.quantity%> | Status: <%= co.status%></li>
     <% end %>
   </ul>
-  <h3> This guy has these dogs: </h3>
+<% end %>
+  
+<% if @owner.dogs_owners.present? %>
+<h3>Dogs: </h3>
   <ul>
     <% @owner.dogs_owners.each do |co| %> 
-      <li><%= co.quantity%> dogs named <%= co.dog.name %></li>
+      <li><%= co.dog.name %> | Quantity: <%= co.quantity%> | Status: <%= co.status%></li>
     <% end %>
   </ul>
 <% end %>
