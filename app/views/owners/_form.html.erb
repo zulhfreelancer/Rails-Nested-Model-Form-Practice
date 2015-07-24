@@ -1,0 +1,29 @@
+<%= form_for(@owner) do |f| %>
+  <% if @owner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+
+      <ul>
+      <% @owner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :name %>
+
+  <%= f.text_field :name %>
+  <h4> Add some Cats </h4>
+  <%= f.fields_for :cats_owners do |co| %>
+    <%= render 'cats_owner_fields', f: co %>
+  <% end %>
+  <%= link_to_add_fields "Add Cat", f, :cats_owners %>
+  <h4> Add some Dogs</h4>
+  <%= f.fields_for :dogs_owners do |co| %>
+    <%= render 'dogs_owner_fields', f: co %>
+  <% end %>
+  <%= link_to_add_fields "Add Dog", f, :dogs_owners %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
