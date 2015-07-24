@@ -50,6 +50,7 @@ class SurveysController < ApplicationController
     redirect_to surveys_url, notice: "Successfully destroyed survey."
   end
 
+
 private
   
   def set_survey

@@ -13,12 +13,27 @@
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
+    
   </div>
-  
-  <%= f.fields_for :questions do |builder| %>
-    <%= render 'question_fields', f: builder %>
+  <br>
+  <%= f.fields_for :questions do |fq| %>
+  <fieldset>
+    <%= fq.label :content, "Question" %><br />
+    <%= fq.text_area :content %><br />
+
+    <% Food.all.each do |fd| %>
+    <fieldset>
+      <%= fq.fields_for :answers do |fa| %>
+      <%= fa.text_field :name, :value => fd.name %>
+      <%= fa.number_field :quantity %>
+    <% end %> <br>
+  </fieldset>
   <% end %>
-  <%= link_to_add_fields "Add Question", f, :questions %>
+
+</fieldset>
+<br>
+<% end %>
+  <br>
   
   <div class="actions">
     <%= f.submit %>
