@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'surveys#index'
-  resources :surveys
+  root to: 'owners#index'
   resources :owners
   
   get '/owners/:id/update_cats_status', to: 'owners#updatecatstatus', as: :update_cats_status
