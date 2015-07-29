@@ -61,6 +61,21 @@ class OwnersController < ApplicationController
     end
   end
 
+  # update cats status
+  def updatecatstatus
+    @owners = Owner.all
+    owner_id = Owner.find(params[:id])
+    CatsOwner.where(owner_id: owner_id).update_all(:status => 1)
+    redirect_to action: "index"
+  end
+
+  def updatedogsstatus
+    @owners = Owner.all
+    owner_id = Owner.find(params[:id])
+    DogsOwner.where(owner_id: owner_id).update_all(:status => 1)
+    redirect_to action: "index"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_owner

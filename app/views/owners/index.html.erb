@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Owners</h1>
 
 <table border="1">
@@ -8,27 +6,35 @@
       <th>Owners</th>
       <th>Cats</th>
       <th>Dogs</th>
-      <th colspan="3">Action</th>
+      <th colspan="5">Action</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @owners.each do |owner| %>
-      <tr>
-        <td><%= owner.name %></td>
-        <td>
-          <li>Example | Quantity: 0</li>
-          <li>Example | Quantity: 0</li>
-        </td>
-        <td>
-          <li>Example | Quantity: 0</li>
-          <li>Example | Quantity: 0</li>
-        </td>
-        <td><%= link_to 'Show', owner %></td>
-        <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
-        <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    
+      <% @owners.each do |owner| %>
+      <% if owner.cats_owners.first.status == 0 %>
+        <tr>
+          <td><%= owner.name %></td>
+          <td>
+            <% owner.cats_owners.each do |c| %>
+              <p><%= c.cat.name %> | Qty: <%= c.quantity %> | Status: <%= c.status %></p>
+            <% end %>
+          </td>
+          <td>
+            <% owner.dogs_owners.each do |d| %>
+              <p><%= d.dog.name %> | Qty: <%= d.quantity %> | Status: <%= d.status %></p>
+            <% end %>
+          </td>
+          <td><%= link_to 'Show', owner %></td>
+          <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
+          <td><%= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Update cats status', update_cats_status_path(:id => owner.id) %></td>
+          <td><%= link_to 'Update dogs status', update_dogs_status_path(:id => owner.id) %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    
   </tbody>
 </table>
 
